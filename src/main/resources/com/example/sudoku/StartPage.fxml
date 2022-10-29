@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.StartPageController">
+   <children>
+      <Label layoutX="239.0" layoutY="63.0" text="SUDOKU">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" layoutX="226.0" layoutY="109.0" promptText="Name" />
+      <ChoiceBox fx:id="difficultyField" layoutX="226.0" layoutY="146.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="sizeField" layoutX="226.0" layoutY="181.0" prefWidth="150.0" />
+      <Button fx:id="startButton" layoutX="222.0" layoutY="307.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="26.0" prefWidth="150.0" text="START" />
+      <Button layoutX="403.0" layoutY="23.0" mnemonicParsing="false" text="LeaderBoard" />
+      <Button layoutX="495.0" layoutY="23.0" mnemonicParsing="false" prefWidth="90.0" text="Achievements" />
+      <TextField fx:id="sizeTextField" editable="false" layoutX="227.0" layoutY="219.0" promptText="Size" />
+   </children>
+</AnchorPane>

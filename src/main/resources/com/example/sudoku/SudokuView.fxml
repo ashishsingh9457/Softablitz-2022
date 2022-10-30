@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.SudokuController">
+   <top>
+      <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
+        <items>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save Game" />
+            <Label fx:id="timeLabel" text="Time: " />
+        </items>
+      </SplitPane>
+   </top>
+   <bottom>
+      <Label fx:id="consoleLabel" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

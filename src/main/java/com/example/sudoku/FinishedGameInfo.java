@@ -11,6 +11,8 @@ public class FinishedGameInfo implements Serializable {
     public String mode;
 
 
+    public String rank;
+
     public String getName() {
         return name;
     }
@@ -30,12 +32,16 @@ public class FinishedGameInfo implements Serializable {
     public String getDate() {
         return date;
     }
+    public String getRank() {
+        return rank;
+    }
 
-    public FinishedGameInfo(String name, int time, String gridSize, String difficulty, String date) {
+    public FinishedGameInfo(String name, int time, String gridSize, String difficulty, String date, String rank) {
         this.time = time;
         this.date = date;
         this.Ssize = gridSize;
         this.name = name;
         this.mode = difficulty;
+        this.rank = rank;
     }
 }

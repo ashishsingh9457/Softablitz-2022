@@ -33,6 +33,7 @@ public class LeaderboardController implements Initializable{
     public TableColumn<FinishedGameInfo,String> boardColumn;
     public TableColumn<FinishedGameInfo,String> modeColumn;
     public TableColumn<FinishedGameInfo,String> playedOnColumn;
+    public TableColumn<FinishedGameInfo,String> rankColumn;
 
     public void populate(Stage stage) throws SQLException {
         this.stage = stage;
@@ -44,8 +45,9 @@ public class LeaderboardController implements Initializable{
 
         ArrayList<FinishedGameInfo> filist = new ArrayList<>();
 
+        int i=1;
         while(rs.next()) {
-            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"));
+            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
             filist.add(fi);
         }
 
@@ -65,6 +67,7 @@ public class LeaderboardController implements Initializable{
         modeColumn.setCellValueFactory(new PropertyValueFactory<>("mode"));
         boardColumn.setCellValueFactory(new PropertyValueFactory<>("Ssize"));
         playedOnColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
     }
 
     public void onFilterButtonClick(ActionEvent event) throws SQLException {
@@ -88,8 +91,9 @@ public class LeaderboardController implements Initializable{
         table.getItems().removeAll(new ArrayList<>(table.getItems()));
         ArrayList<FinishedGameInfo> filist = new ArrayList<>();
 
+        int i=1;
         while(rs.next()) {
-            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"));
+            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
             filist.add(fi);
         }
         table.getItems().addAll(filist);

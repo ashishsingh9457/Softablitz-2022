@@ -26,6 +26,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StartPageController implements Initializable {
+    public Button signInButton;
+    public Button achievementsButton;
     @FXML
     protected Label consoleLabel;
     @FXML
@@ -96,9 +98,6 @@ public class StartPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] diffs = {"Easy", "Medium", "Hard", "Test"};
         String[] sizes = {"4x4", "9x9", "16x16", "Custom"};
-
-        nameField.setText(System.getProperty("user.name"));
-
         difficultyField.getItems().addAll(diffs);
         difficultyField.setValue("Medium");
         difficultyField.setOnAction(this::onSetDifficulty);
@@ -106,6 +105,18 @@ public class StartPageController implements Initializable {
         sizeField.getItems().addAll(sizes);
         sizeField.setValue("9x9");
         sizeField.setOnAction(this::onSetSize);
+
+        User user = User.getInstance();
+
+        if(user.getEmail() == null) {
+            nameField.setText(System.getProperty("user.name"));
+            achievementsButton.setDisable(true);
+        }else {
+            nameField.setText(user.getUsername());
+            nameField.setEditable(false);
+            signInButton.setDisable(true);
+            signInButton.setText("Signed in As "+user.getUsername());
+        }
     }
 
     private void onSetDifficulty(ActionEvent event) {
@@ -159,6 +170,19 @@ public class StartPageController implements Initializable {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file.getAbsoluteFile()));
             Game game = (Game) ois.readObject();
             ois.close();
+
+            if(game.getId()==null && User.getInstance().getId()==null) {
+                if(!nameField.getText().equals(game.getName())){
+                    consoleLabel.setText("Conflicting ownership of file been opened and saved : Check Name-Field");
+                    return;
+                }
+            }else if(game.getId()==null || User.getInstance().getId()==null){
+                consoleLabel.setText("Conflicting ownership of file been opened and saved");
+                return;
+            }else if(!game.getId().equals(User.getInstance().getId())){
+                consoleLabel.setText("Conflicting ownership of file been opened and saved");
+                return;
+            }
 
             int size = game.getSize();
 
@@ -221,6 +245,7 @@ public class StartPageController implements Initializable {
     }
 
     public void onSigninButtonClick(ActionEvent event) throws IOException {
+        ((Stage)((Node) event.getSource()).getScene().getWindow()).close();
         FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("LoginPage.fxml"));
         Stage stage = new Stage();
 
@@ -246,4 +271,17 @@ public class StartPageController implements Initializable {
         return true;
     }
 
+    public void onAchievementsButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("HighScores.fxml"));
+        BorderPane root = fxmlLoader.load();
+        ScrollPane sp = new ScrollPane();
+
+        // create necessary changes in the scene
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

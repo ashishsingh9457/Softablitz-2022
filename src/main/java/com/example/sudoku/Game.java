@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Game implements Serializable {
+    public String id;
     public String name;
     public int size;
     public String Ssize;
@@ -16,6 +17,7 @@ public class Game implements Serializable {
     public int numberOfHints;
 
     Game(String name, String mode, String Ssize) {
+        this.id = User.getInstance().getId();
         this.name = name;
         this.difficulty = mode;
         this.Ssize = Ssize;
@@ -120,5 +122,9 @@ public class Game implements Serializable {
     }
     public String getSsize() {
         return Ssize;
+    }
+
+    public String getId() {
+        return id;
     }
 }

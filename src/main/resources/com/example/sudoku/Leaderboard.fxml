@@ -34,8 +34,9 @@
                <children>
                   <TableView fx:id="table" prefHeight="339.0" prefWidth="600">
                     <columns>
-                      <TableColumn fx:id="nameColumn" minWidth="-1.0" prefWidth="187.19995123147964" text="Name" />
-                      <TableColumn fx:id="gametimeColumn" minWidth="6.39996337890625" prefWidth="105.5999755859375" text="Game Time" />
+                        <TableColumn prefWidth="66.39999014139175" text="Rank" fx:id="rankColumn" />
+                      <TableColumn fx:id="nameColumn" minWidth="-1.0" prefWidth="130.4000244140625" text="Name" />
+                      <TableColumn fx:id="gametimeColumn" minWidth="6.39996337890625" prefWidth="64.00001525878906" text="Game Time" />
                         <TableColumn fx:id="boardColumn" prefWidth="119.20001220703125" text="Board" />
                         <TableColumn fx:id="modeColumn" minWidth="-1.0" prefWidth="170.39996337890625" text="Mode" />
                         <TableColumn fx:id="playedOnColumn" prefWidth="75.0" text="Played on" />

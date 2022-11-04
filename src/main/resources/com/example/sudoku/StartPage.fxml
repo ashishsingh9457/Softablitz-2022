@@ -20,13 +20,13 @@
       <ChoiceBox fx:id="sizeField" layoutX="226.0" layoutY="181.0" prefWidth="150.0" />
       <Button fx:id="startButton" layoutX="222.0" layoutY="307.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="26.0" prefWidth="150.0" text="START" />
       <Button layoutX="403.0" layoutY="23.0" mnemonicParsing="false" onAction="#onLeaderboardButtonClick" text="LeaderBoard" />
-      <Button layoutX="495.0" layoutY="23.0" mnemonicParsing="false" prefWidth="90.0" text="Achievements" />
+      <Button fx:id="achievementsButton" layoutX="495.0" layoutY="23.0" mnemonicParsing="false" onAction="#onAchievementsButtonClick" prefWidth="90.0" text="Achievements" />
       <TextField fx:id="sizeTextField" disable="true" layoutX="227.0" layoutY="219.0" promptText="Size" />
       <Button fx:id="loadGameButton" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#onLoadButtonClick" text="Load">
          <graphic>
             <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" />
          </graphic></Button>
-      <Button layoutX="83.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSigninButtonClick" text="Sign in">
+      <Button fx:id="signInButton" layoutX="83.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSigninButtonClick" text="Sign in">
          <graphic>
             <FontAwesomeIconView glyphName="SIGN_IN" />
          </graphic>

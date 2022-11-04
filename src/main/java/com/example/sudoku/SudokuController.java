@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -44,6 +45,7 @@ public class SudokuController   {
     private GameStack gameStack;
     private int numberOfHints;
     public void populate(Game game, Stage stage, Parent root, TextField[][] tfs)  {
+
         gameStack = new GameStack();
         this.tfs = tfs;
         this.game=  game;
@@ -213,6 +215,10 @@ public class SudokuController   {
     }
 
     public void onGameCompleteHandler() {
+        if(User.getInstance().getUsername()==null){
+            return;
+        }
+
         // use database
         try{
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");

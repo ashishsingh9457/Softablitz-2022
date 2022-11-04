@@ -24,6 +24,7 @@ public class RegisterController {
     public Scene scene;
     public Stage stage;
     public Label consoleLabel;
+    public TextField emailTf;
 
     public void onRegisterButtonClick(ActionEvent event) {
 
@@ -37,16 +38,19 @@ public class RegisterController {
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
             Statement statement = conn.createStatement();
 
-            String query = "INSERT INTO USERS VALUES ( '" + usernameTf.getText() + "' , '" + passwordTf.getText() + "' )";
+            String query = "INSERT INTO USERS (email, username, password) VALUES ( '" + emailTf.getText() + "' , '" + usernameTf.getText() + "' , '" + passwordTf.getText() + "' )";
             statement.executeUpdate(query);
             consoleLabel.setText("Registered Successfully");
         }catch (SQLException e){
             consoleLabel.setText("Registration Failed");
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
     public void onLoginButtonClick(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ((Stage) ((Node)event.getSource()).getScene().getWindow()).close();
+        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("LoginPage.fxml"));
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

@@ -3,14 +3,15 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.RegisterController">
     <center>
-        <AnchorPane prefHeight="288.0" prefWidth="382.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="294.0" prefWidth="382.0" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="loginButton" layoutX="240.0" layoutY="185.0" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login">
                     <graphic>
@@ -20,14 +21,16 @@
                 <Label layoutX="82.0" layoutY="61.0" text="Username" />
                 <Label layoutX="82.0" layoutY="102.0" text="Password" />
                 <TextField fx:id="usernameTf" layoutX="152.0" layoutY="57.0" />
-                <TextField fx:id="passwordTf" layoutX="152.0" layoutY="98.0" />
                 <Button fx:id="registerButton" layoutX="153.0" layoutY="185.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="26.0" prefWidth="75.0" text="Register">
                     <graphic>
                         <FontAwesomeIconView />
                     </graphic>
                 </Button>
             <Label layoutX="40.0" layoutY="143.0" text="Confirm Password" />
-            <TextField fx:id="cpasswordTf" layoutX="153.0" layoutY="139.0" />
+            <TextField fx:id="emailTf" layoutX="153.0" layoutY="14.0" />
+            <Label layoutX="103.0" layoutY="18.0" text="Email" />
+            <PasswordField fx:id="passwordTf" layoutX="153.0" layoutY="98.0" />
+            <PasswordField fx:id="cpasswordTf" layoutX="153.0" layoutY="139.0" />
             </children>
         </AnchorPane>
     </center>

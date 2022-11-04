@@ -38,4 +38,12 @@ public class Time implements Serializable {
     public int getTimeInSeconds(){
         return second + minute*60 + hour*3600;
     }
+
+    public static String parseTime(int seconds) {
+        int hrs = seconds/3600;
+        seconds = seconds%3600;
+        int mins = seconds/60;
+        seconds = seconds%60;
+        return hrs+" : "+mins+" : "+seconds;
+    }
 }

@@ -26,7 +26,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StartPageController implements Initializable {
-    public Button loadGameButton;
+    @FXML
+    protected Label consoleLabel;
+    @FXML
+    protected Button loadGameButton;
     protected Stage stage;
     @FXML
     protected TextField nameField;
@@ -42,21 +45,22 @@ public class StartPageController implements Initializable {
 
     // creates a new scene for Sudoku Grid
     public void onStartButtonClick(ActionEvent event) throws IOException {
-        String name = nameField.getText();
-        int difficulty = parseDifficulty();
-        int size = parseSize();
+        if(!checkInvalidFields())
+            return;
+
+        // Game Object creation
+        Game game = new Game(this.nameField.getText(), this.difficultyField.getValue(), this.sizeField.getValue());
 
         FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("SudokuView.fxml"));
-        BorderPane root = (BorderPane) fxmlLoader.load();
+        BorderPane root = fxmlLoader.load();
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
         root.setCenter(gp);
 
-
         // Creating TextFields and styling them
-        TextField[][] tfs = new TextField[size][size];
-        for(int i=0; i<size; i++)
-            for(int j=0; j<size; j++) {
+        TextField[][] tfs = new TextField[game.getSize()][game.getSize()];
+        for(int i=0; i<game.getSize(); i++)
+            for(int j=0; j<game.getSize(); j++) {
                 tfs[i][j] = new TextField();
                 tfs[i][j].setPrefWidth(50);
                 tfs[i][j].setPrefHeight(25);
@@ -65,7 +69,7 @@ public class StartPageController implements Initializable {
                 gp.add(tfs[i][j], j, i);
 
                 // alternate coloring
-                int SQN = (int)Math.sqrt(size);
+                int SQN = (int)Math.sqrt(game.getSize());
                 if( (i/SQN + j/SQN)%2==0 )
                     tfs[i][j].setStyle("-fx-background-color: #FCF6F5FF; -fx-border-color: #000;");
                 else
@@ -79,7 +83,7 @@ public class StartPageController implements Initializable {
 
         // populating necessary fields in SudokuController Object
         SudokuController sc = fxmlLoader.getController();
-        sc.populate(new Game(name, difficulty, size), stage, root, tfs);
+        sc.populate(game, stage, root, tfs);
 
 
         Scene scene = new Scene(root);
@@ -90,14 +94,17 @@ public class StartPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] diffs = {"Easy", "Medium", "Hard"};
+        String[] diffs = {"Easy", "Medium", "Hard", "Test"};
         String[] sizes = {"4x4", "9x9", "16x16", "Custom"};
-        difficultyField.getItems().addAll(diffs);
-        difficultyField.setValue("Difficulty");
-        sizeField.getItems().addAll(sizes);
-        sizeField.setValue("Board Size");
 
+        nameField.setText(System.getProperty("user.name"));
+
+        difficultyField.getItems().addAll(diffs);
+        difficultyField.setValue("Medium");
         difficultyField.setOnAction(this::onSetDifficulty);
+
+        sizeField.getItems().addAll(sizes);
+        sizeField.setValue("9x9");
         sizeField.setOnAction(this::onSetSize);
     }
 
@@ -108,10 +115,10 @@ public class StartPageController implements Initializable {
     private void onSetSize(ActionEvent event)   {
         if(sizeField.getValue().equals("Custom"))
         {
-            sizeTextField.setEditable(true);
+            sizeTextField.setDisable(false);
         }else{
             sizeTextField.setText("");
-            sizeTextField.setEditable(false);
+            sizeTextField.setDisable(true);
         }
     }
 
@@ -127,17 +134,17 @@ public class StartPageController implements Initializable {
             return 0;
     }
 
-    private int parseDifficulty() {
-        String value = difficultyField.getValue();
-
-        if(value.equals("Easy"))
-            return 1;
-        else if(value.equals("Medium"))
-            return  55;
-        else if (value.equals("Hard"))
-            return 58;
-        else return 0;
-    }
+//    private int parseDifficulty() {
+//        String value = difficultyField.getValue();
+//
+//        if(value.equals("Easy"))
+//            return 1;
+//        else if(value.equals("Medium"))
+//            return  55;
+//        else if (value.equals("Hard"))
+//            return 58;
+//        else return 0;
+//    }
 
     public void onLoadButtonClick(ActionEvent event) {
 
@@ -222,4 +229,21 @@ public class StartPageController implements Initializable {
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.show();
     }
+
+    public boolean checkInvalidFields() {
+        if(this.nameField.getText().equals("")){
+            consoleLabel.setText("Empty Name Field");
+            return false;
+        }
+        if(this.sizeField.getValue()==null){
+            consoleLabel.setText("Empty Size Field");
+            return false;
+        }
+        if(this.difficultyField.getValue()==null) {
+            consoleLabel.setText("Empty Mode Field");
+            return false;
+        }
+        return true;
+    }
+
 }

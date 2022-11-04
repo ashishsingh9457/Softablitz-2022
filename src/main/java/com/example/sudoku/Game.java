@@ -4,47 +4,47 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Game implements Serializable {
-    private String name;
-    private int size;
+    public String name;
+    public int size;
+    public String Ssize;
     public int[][] grid;
     public int[][] solutionGrid;
     public Time time;
     public boolean isCompleted;
     public int blanks;
     public String difficulty;
+    public int numberOfHints;
 
-    Game(String name, int blanks, int size)  {
+    Game(String name, String mode, String Ssize) {
         this.name = name;
-        this.size = size;
-        isCompleted = false;
-        time = new Time();
-        this.blanks = blanks;
+        this.difficulty = mode;
+        this.Ssize = Ssize;
+        this.size = sizeToIntegerParser(Ssize);
+        this.time = new Time();
+        parseModeToBlanks();
+        this.isCompleted = false;
+        this.numberOfHints = (int)(this.size*0.4);
 
         Sudoku sudoku = new Sudoku(this.size, this.blanks);
         sudoku.fillValues();
-        solutionGrid = sudoku.getGrid();
+        this.solutionGrid = sudoku.getGrid();
         sudoku.removeKDigits();
-        grid = sudoku.getGrid();
-
-        System.out.println("Solution: ");
-        for(int i=0; i<size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(solutionGrid[i][j] + " ");
-            }
-            System.out.println();
-        }
+        this.grid = sudoku.getGrid();
     }
 
-    void parseDifficulty() {
+    void parseModeToBlanks() {
         if(difficulty.equals("Hard")){
-            int blanks = (int)(58 +  7*Math.random());
+            this.blanks = (int)((0.71 +  0.08*Math.random())*size*size);
         }else if(difficulty.equals("Medium"))
         {
-            int blanks = (int)(53 +  3*Math.random());
-        }else
+            this.blanks = (int)((0.65 +  0.03*Math.random())*size*size);
+        }else if(difficulty.equals("Easy"))
         {
-            int blanks = (int)(48 +  5*Math.random());
+            this.blanks = (int)((0.59 +  0.06*Math.random())*size*size);
+        }else{
+            this.blanks = 1;
         }
+//        System.out.println(this.blanks);
     }
 
     Game(Game game) {
@@ -52,9 +52,12 @@ public class Game implements Serializable {
         this.size = game.size;
         this.blanks = game.blanks;
         this.time = game.time;
+        this.Ssize = game.Ssize;
+        this.difficulty = game.difficulty;
         this.isCompleted = game.isCompleted;
         this.grid = new int[size][size];
         this.solutionGrid = new int[size][size];
+        this.numberOfHints = game.numberOfHints;
 
         for(int i=0; i< game.size; i++){
             for(int j=0; j< game.size; j++){
@@ -64,8 +67,6 @@ public class Game implements Serializable {
         }
     }
 
-    public int getSize() {return size;}
-    public String getName() {return name;}
     public boolean checkCompletedGame() {
         for (int i=0; i<size; i++) {
             for(int j=0; j<size; j++){
@@ -78,5 +79,46 @@ public class Game implements Serializable {
 
         isCompleted = true;
         return true;
+    }
+
+    public String sizeToStringParser(int size) {
+        return size + "x" + size;
+    }
+
+    public int sizeToIntegerParser(String Ssize) {
+        return Integer.parseInt(Ssize.charAt(0) + "");
+    }
+
+    public int getSize() {return size;}
+
+    public String getName() {return name;}
+    public int[][] getGrid() {
+        return grid;
+    }
+
+    public int[][] getSolutionGrid() {
+        return solutionGrid;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public int getBlanks() {
+        return blanks;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+    public int getNumberOfHints() {
+        return numberOfHints;
+    }
+    public String getSsize() {
+        return Ssize;
     }
 }

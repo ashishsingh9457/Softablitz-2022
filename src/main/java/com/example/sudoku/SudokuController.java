@@ -162,7 +162,7 @@ public class SudokuController   {
         if(game.checkCompletedGame()){
             consoleLabel.setText("Game finished Successfully");
             root.setStyle("-fx-background-color: #ff950e;");
-//            onGameCompleteHandler();
+            onGameCompleteHandler();
         }else if(Checker.isValidMove(game.grid, i, j, game.getSize())){
             consoleLabel.setText("Valid Move");
             root.setStyle("-fx-background-color: #78f400;");
@@ -218,11 +218,12 @@ public class SudokuController   {
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
             Statement statement = conn.createStatement();
 
-            String query = "INSERT INTO GAMEDATA VALUES ( '" + game.getName() + "' , " + game.time.getTimeInSeconds() + " , '" + game.difficulty + "' , '"+ game.getSize() + "' )";
+            String query = "INSERT INTO GAMEDATA (username, game_time, mode, board) VALUES ( '" + game.getName() + "' , " + game.time.getTimeInSeconds() + " , '" + game.difficulty + "' , '"+ game.getSsize() + "' )";
             statement.executeUpdate(query);
             consoleLabel.setText("Game result Saved");
         }catch (SQLException e){
             consoleLabel.setText("Problem occurred saving the result");
+            e.printStackTrace();
         }
     }
 

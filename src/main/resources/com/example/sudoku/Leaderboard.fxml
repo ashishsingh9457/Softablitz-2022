@@ -32,12 +32,13 @@
          <content>
             <VBox fx:id="vbox" alignment="CENTER">
                <children>
-                  <TableView fx:id="table">
+                  <TableView fx:id="table" prefHeight="339.0" prefWidth="600">
                     <columns>
-                      <TableColumn fx:id="nameColumn" minWidth="-1.0" prefWidth="223.2000030875206" text="Name" />
-                      <TableColumn fx:id="gametimeColumn" minWidth="6.39996337890625" prefWidth="126.39997863769531" text="Game Time" />
-                        <TableColumn fx:id="modeColumn" prefWidth="114.4000244140625" text="Mode" />
-                        <TableColumn fx:id="difficultyColumn" minWidth="-1.0" prefWidth="113.60006713867188" text="Difficulty" />
+                      <TableColumn fx:id="nameColumn" minWidth="-1.0" prefWidth="187.19995123147964" text="Name" />
+                      <TableColumn fx:id="gametimeColumn" minWidth="6.39996337890625" prefWidth="105.5999755859375" text="Game Time" />
+                        <TableColumn fx:id="boardColumn" prefWidth="119.20001220703125" text="Board" />
+                        <TableColumn fx:id="modeColumn" minWidth="-1.0" prefWidth="170.39996337890625" text="Mode" />
+                        <TableColumn fx:id="playedOnColumn" prefWidth="75.0" text="Played on" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -51,8 +52,8 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="difficultyComboBox" prefHeight="29.0" prefWidth="90.0" promptText="Difficulty" />
-            <ComboBox fx:id="modeComboBox" prefHeight="29.0" prefWidth="74.0" promptText="Mode" />
+            <ComboBox fx:id="modeComboBox" prefHeight="29.0" prefWidth="90.0" promptText="Mode" />
+            <ComboBox fx:id="boardComboBox" prefHeight="29.0" prefWidth="74.0" promptText="Board" />
             <Button mnemonicParsing="false" onAction="#onFilterButtonClick">
                <graphic>
                   <FontAwesomeIconView glyphName="SEARCH" size="21">

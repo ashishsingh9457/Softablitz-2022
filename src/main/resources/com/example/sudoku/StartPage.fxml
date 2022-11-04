@@ -21,7 +21,7 @@
       <Button fx:id="startButton" layoutX="222.0" layoutY="307.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="26.0" prefWidth="150.0" text="START" />
       <Button layoutX="403.0" layoutY="23.0" mnemonicParsing="false" onAction="#onLeaderboardButtonClick" text="LeaderBoard" />
       <Button layoutX="495.0" layoutY="23.0" mnemonicParsing="false" prefWidth="90.0" text="Achievements" />
-      <TextField fx:id="sizeTextField" editable="false" layoutX="227.0" layoutY="219.0" promptText="Size" />
+      <TextField fx:id="sizeTextField" disable="true" layoutX="227.0" layoutY="219.0" promptText="Size" />
       <Button fx:id="loadGameButton" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#onLoadButtonClick" text="Load">
          <graphic>
             <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" />
@@ -31,5 +31,16 @@
             <FontAwesomeIconView glyphName="SIGN_IN" />
          </graphic>
       </Button>
+      <Label layoutX="176.0" layoutY="148.0" text="Mode">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="183.0" text="Size">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="consoleLabel" layoutX="14.0" layoutY="369.0" prefHeight="18.0" prefWidth="574.0" />
    </children>
 </AnchorPane>

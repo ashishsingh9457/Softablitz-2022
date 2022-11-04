@@ -6,40 +6,36 @@ import java.util.Date;
 public class FinishedGameInfo implements Serializable {
     public String name;
     public int time;
-    public Date date;
-    public String gridSize;
-    public String difficulty;
+    public String date;
+    public String Ssize;
+    public String mode;
 
 
     public String getName() {
         return name;
     }
 
-    public int getTime() {
-        return time;
+    public String getTime() {
+        return Time.parseTime(time);
     }
 
-    public String getGridSize() {
-        return gridSize;
+    public String getSsize() {
+        return Ssize;
     }
 
-    public String getDifficulty() {
-        return difficulty;
+    public String getMode() {
+        return mode;
     }
 
-
-    public FinishedGameInfo(Game game) {
-        this.name = game.getName();
-        this.time = game.time.getTimeInSeconds();
-        this.gridSize = game.getSize()+"x"+ game.getSize();
-        this.date = new Date();
+    public String getDate() {
+        return date;
     }
 
-    public FinishedGameInfo(String name, int time, String gridSize, String difficulty) {
+    public FinishedGameInfo(String name, int time, String gridSize, String difficulty, String date) {
         this.time = time;
-        this.date = new Date();
-        this.gridSize = gridSize;
+        this.date = date;
+        this.Ssize = gridSize;
         this.name = name;
-        this.difficulty = difficulty;
+        this.mode = difficulty;
     }
 }

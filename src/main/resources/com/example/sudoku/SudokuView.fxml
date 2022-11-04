@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.SudokuController">
+<BorderPane maxHeight="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.SudokuController">
    <top>
-      <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
-        <items>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save Game" />
-            <Label fx:id="timeLabel" text="Time: " />
-        </items>
-      </SplitPane>
+      <ToolBar>
+         <items>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SAVE" size="24" />
+               </graphic>
+            </Button>
+            <Button fx:id="hintButton" graphicTextGap="24.0" mnemonicParsing="false" onAction="#onHintButtonClick" text="Hint">
+               <graphic>
+                  <FontAwesomeIconView glyphName="QUESTION" size="24" text="" />
+               </graphic>
+            </Button>
+            <Label fx:id="nameLabel">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" size="24" />
+               </graphic>
+            </Label>
+            <Label fx:id="timeLabel" text="Time: ">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CIRCLE" size="24" />
+               </graphic>
+            </Label>
+            <Button fx:id="undoButton" mnemonicParsing="false" onAction="#onUndoButtonClick">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="24" />
+               </graphic>
+            </Button>
+            <Button fx:id="redoButton" mnemonicParsing="false" onAction="#onRedoButtonClick">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_RIGHT" size="24" />
+               </graphic>
+            </Button>
+         </items>
+      </ToolBar>
    </top>
    <bottom>
       <Label fx:id="consoleLabel" BorderPane.alignment="CENTER" />

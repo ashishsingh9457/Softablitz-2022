@@ -1,15 +1,15 @@
 package com.example.sudoku;
+import java.lang.*;
 
-import java.util.Arrays;
-
-public class Brain {
+public class Sudoku
+{
     int[] mat[];
     int N; // number of columns/rows.
     int SRN; // square root of N
     int K; // No. Of missing digits
 
     // Constructor
-    Brain(int N, int K)
+    Sudoku(int N, int K)
     {
         this.N = N;
         this.K = K;
@@ -31,7 +31,7 @@ public class Brain {
         fillRemaining(0, SRN);
 
         // Remove Randomly K digits to make game
-        removeKDigits();
+//        removeKDigits();
     }
 
     // Fill the diagonal SRN number of SRN x SRN matrices
@@ -166,7 +166,7 @@ public class Brain {
             // System.out.println(cellId);
             // extract coordinates i and j
             int i = (cellId/N);
-            int j = cellId%9;
+            int j = cellId%(N+1);
             if (j != 0)
                 j = j - 1;
 
@@ -191,149 +191,21 @@ public class Brain {
         System.out.println();
     }
 
-    // get Grid
-    public int[][] getGrid()    {
-        return mat;
+    public int[][] getGrid() {
+        int[][] matrix = new int[N][N];
+
+        for(int i=0; i<N; i++)
+            for(int j=0; j<N; j++)
+                    matrix[i][j] = mat[i][j];
+        return matrix;
     }
 
-    static boolean isinRange(int[][] board, int N)
+    // Driver code
+    public static void main(String[] args)
     {
-
-        // Traverse board[][] array
-        for(int i = 0; i < N; i++)
-        {
-            for(int j = 0; j < N; j++)
-            {
-
-                // Check if board[i][j]
-                // lies in the range
-                if (board[i][j] <= 0 ||
-                        board[i][j] > 9)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    // Function to check if the solution
-// of sudoku puzzle is valid or not
-    static boolean isValidSudoku(int board[][], int N)
-    {
-
-        // Check if all elements of board[][]
-        // stores value in the range[1, 9]
-        if (!isinRange(board, N))
-        {
-            return false;
-        }
-
-        // Stores unique value
-        // from 1 to N
-        boolean[] unique = new boolean[N + 1];
-
-        // Traverse each row of
-        // the given array
-        for(int i = 0; i < N; i++)
-        {
-
-            // Initialize unique[]
-            // array to false
-            Arrays.fill(unique, false);
-
-            // Traverse each column
-            // of current row
-            for(int j = 0; j < N; j++)
-            {
-
-                // Stores the value
-                // of board[i][j]
-                int Z = board[i][j];
-
-                // Check if current row
-                // stores duplicate value
-                if (unique[Z])
-                {
-                    return false;
-                }
-                unique[Z] = true;
-            }
-        }
-
-        // Traverse each column of
-        // the given array
-        for(int i = 0; i < N; i++)
-        {
-
-            // Initialize unique[]
-            // array to false
-            Arrays.fill(unique, false);
-
-            // Traverse each row
-            // of current column
-            for(int j = 0; j < N; j++)
-            {
-
-                // Stores the value
-                // of board[j][i]
-                int Z = board[j][i];
-
-                // Check if current column
-                // stores duplicate value
-                if (unique[Z])
-                {
-                    return false;
-                }
-                unique[Z] = true;
-            }
-        }
-
-        // Traverse each block of
-        // size 3 * 3 in board[][] array
-        for(int i = 0; i < N - 2; i += 3)
-        {
-
-            // j stores first column of
-            // each 3 * 3 block
-            for(int j = 0; j < N - 2; j += 3)
-            {
-
-                // Initialize unique[]
-                // array to false
-                Arrays.fill(unique, false);
-
-                // Traverse current block
-                for(int k = 0; k < 3; k++)
-                {
-                    for(int l = 0; l < 3; l++)
-                    {
-
-                        // Stores row number
-                        // of current block
-                        int X = i + k;
-
-                        // Stores column number
-                        // of current block
-                        int Y = j + l;
-
-                        // Stores the value
-                        // of board[X][Y]
-                        int Z = board[X][Y];
-
-                        // Check if current block
-                        // stores duplicate value
-                        if (unique[Z])
-                        {
-                            return false;
-                        }
-                        unique[Z] = true;
-                    }
-                }
-            }
-        }
-
-        // If all conditions satisfied
-        return true;
+        int N = 9, K = 20;
+        Sudoku sudoku = new Sudoku(N, K);
+        sudoku.fillValues();
+        sudoku.printSudoku();
     }
 }

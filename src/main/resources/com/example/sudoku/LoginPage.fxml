@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.LoginController">
+   <center>
+      <AnchorPane prefHeight="288.0" prefWidth="382.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="152.0" layoutY="140.0" mnemonicParsing="false" text="Login">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ENTER" />
+               </graphic>
+            </Button>
+            <Label layoutX="64.0" layoutY="61.0" text="Username" />
+            <Label layoutX="64.0" layoutY="102.0" text="Password" />
+            <TextField layoutX="139.0" layoutY="57.0" prefHeight="26.0" prefWidth="165.0" />
+            <TextField layoutX="139.0" layoutY="98.0" prefHeight="26.0" prefWidth="165.0" />
+            <Button layoutX="227.0" layoutY="140.0" mnemonicParsing="false" text="Register">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label text="Login" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

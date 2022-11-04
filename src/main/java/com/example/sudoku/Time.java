@@ -1,23 +1,41 @@
 package com.example.sudoku;
 
-public class Time {
+import java.io.Serializable;
+
+public class Time implements Serializable {
     private int minute;
     private int hour;
     private int second;
 
     public void tick()  {
         second ++;
-        if(second == 60) {
+        if(second >= 60) {
             minute++;
             second = 0;
         }
-        if(minute == 60) {
+        if(minute >= 60) {
             hour++;
+            minute = 0;
+        }
+    }
+
+    public void tick(int n){
+        second+=n;
+        if(second >= 60) {
+            minute += second/60;
+            second = 0;
+        }
+        if(minute >= 60) {
+            hour += hour/60;
             minute = 0;
         }
     }
 
     public String getTime()   {
         return hour + " : " + minute + " : " + second;
+    }
+
+    public int getTimeInSeconds(){
+        return second + minute*60 + hour*3600;
     }
 }

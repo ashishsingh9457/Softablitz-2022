@@ -25,7 +25,7 @@ public class Game implements Serializable {
         this.time = new Time();
         parseModeToBlanks();
         this.isCompleted = false;
-        this.numberOfHints = (int)(this.size*0.4);
+        this.numberOfHints = (int)(this.size*this.size*0.4);
 
         Sudoku sudoku = new Sudoku(this.size, this.blanks);
         sudoku.fillValues();
@@ -88,7 +88,9 @@ public class Game implements Serializable {
     }
 
     public int sizeToIntegerParser(String Ssize) {
-        return Integer.parseInt(Ssize.charAt(0) + "");
+        if(Ssize.charAt(1) == 'x')
+            return Integer.parseInt(Ssize.charAt(0) + "");
+        return Integer.parseInt(Ssize.substring(0,2));
     }
 
     public int getSize() {return size;}

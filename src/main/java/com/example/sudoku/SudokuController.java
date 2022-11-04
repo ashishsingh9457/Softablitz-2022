@@ -43,7 +43,9 @@ public class SudokuController   {
     protected Game game;
     protected TextField[][] tfs;
     private GameStack gameStack;
-    private int numberOfHints;
+
+    private boolean stopTimer = false;
+
     public void populate(Game game, Stage stage, Parent root, TextField[][] tfs)  {
 
         gameStack = new GameStack();
@@ -52,7 +54,6 @@ public class SudokuController   {
         this.root = root;
         this.stage = stage;
         nameLabel.setText(game.getName());
-        numberOfHints = (int)(game.blanks * 0.4);
 
         for(int i=0; i<game.getSize(); i++)
             for(int j=0; j<game.getSize(); j++) {
@@ -92,7 +93,7 @@ public class SudokuController   {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!game.isCompleted){
+                while (!game.isCompleted && !stopTimer){
                     Platform.runLater(()->{
                         timeLabel.setText("Time: " + game.time.getTime());
                     });
@@ -106,12 +107,18 @@ public class SudokuController   {
             }
         }).start();
 
+        stage.setOnCloseRequest(windowEvent -> {
+            stopTimer = true;
+        });
+
         if(gameStack.undoStack.isEmpty()){
             undoButton.setDisable(true);
         }
         if(gameStack.redoStack.isEmpty()){
             redoButton.setDisable(true);
         }
+        if(game.getNumberOfHints()==0)
+            hintButton.setDisable(true);
     }
 
     public void onSaveButtonClick(ActionEvent event) {
@@ -224,7 +231,7 @@ public class SudokuController   {
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
             Statement statement = conn.createStatement();
 
-            String query = "INSERT INTO GAMEDATA (username, game_time, mode, board) VALUES ( '" + game.getName() + "' , " + game.time.getTimeInSeconds() + " , '" + game.difficulty + "' , '"+ game.getSsize() + "' )";
+            String query = "INSERT INTO GAMEDATA (username, game_time, mode, board, uid) VALUES ( '" + game.getName() + "' , " + game.time.getTimeInSeconds() + " , '" + game.difficulty + "' , '"+ game.getSsize() + "' , '"+game.getId() + "' )";
             statement.executeUpdate(query);
             consoleLabel.setText("Game result Saved");
         }catch (SQLException e){
@@ -256,7 +263,7 @@ public class SudokuController   {
 
         gameStack.undoStack.push(new Game(game));
         game.grid[hi][hj] = game.solutionGrid[hi][hj];
-        game.time.tick(game.getSize()* game.getSize()-numberOfHints);
+        game.time.tick(game.getSize()* game.getSize()- game.getNumberOfHints());
 
         if(!gameStack.undoStack.isEmpty())
             undoButton.setDisable(false);
@@ -264,8 +271,19 @@ public class SudokuController   {
         tfs[hi][hj].setText(game.solutionGrid[hi][hj] + "");
         timeLabel.setText("Time: "+game.time.getTime());
 
-        numberOfHints--;
-        if(numberOfHints==0)
+        game.numberOfHints--;
+        if(game.numberOfHints==0)
             hintButton.setDisable(true);
+    }
+
+    public void onExitButtonClick(ActionEvent event) throws IOException {
+        stopTimer = true;
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("StartPage.fxml"));
+        Stage stage = new Stage();
+
+        stage.setTitle("Sudoku");
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.show();
     }
 }

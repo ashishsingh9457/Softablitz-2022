@@ -31,13 +31,14 @@ public class HighScoresController implements Initializable {
         boardColumn.setCellValueFactory(new PropertyValueFactory<>("Ssize"));
         modeColumn.setCellValueFactory(new PropertyValueFactory<>("mode"));
         playedOnColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        bestColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
 
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
             Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            ResultSet rs = statement.executeQuery("SELECT *  FROM GAMEDATA WHERE username = '"+ User.getInstance().getUsername() +"' ORDER BY game_time");
+            ResultSet rs = statement.executeQuery("SELECT *  FROM GAMEDATA WHERE uid = '"+ User.getInstance().getId() +"' ORDER BY game_time");
             ArrayList<FinishedGameInfo> filist = new ArrayList<>();
 
             int i=1;

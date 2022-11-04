@@ -64,8 +64,8 @@ public class StartPageController implements Initializable {
         for(int i=0; i<game.getSize(); i++)
             for(int j=0; j<game.getSize(); j++) {
                 tfs[i][j] = new TextField();
-                tfs[i][j].setPrefWidth(50);
-                tfs[i][j].setPrefHeight(25);
+                tfs[i][j].setPrefWidth(65);
+                tfs[i][j].setPrefHeight(65);
                 tfs[i][j].setFont(new Font(25));
                 tfs[i][j].setAlignment(Pos.CENTER);
                 gp.add(tfs[i][j], j, i);
@@ -193,15 +193,22 @@ public class StartPageController implements Initializable {
 
 
             // Creating TextFields
-            TextField[][] tfs = new TextField[size][size];
-            for(int i=0; i<size; i++)
-                for(int j=0; j<size; j++) {
+            TextField[][] tfs = new TextField[game.getSize()][game.getSize()];
+            for(int i=0; i<game.getSize(); i++)
+                for(int j=0; j<game.getSize(); j++) {
                     tfs[i][j] = new TextField();
-                    tfs[i][j].setPrefWidth(50);
-                    tfs[i][j].setPrefHeight(25);
+                    tfs[i][j].setPrefWidth(65);
+                    tfs[i][j].setPrefHeight(65);
                     tfs[i][j].setFont(new Font(25));
                     tfs[i][j].setAlignment(Pos.CENTER);
                     gp.add(tfs[i][j], j, i);
+
+                    // alternate coloring
+                    int SQN = (int)Math.sqrt(game.getSize());
+                    if( (i/SQN + j/SQN)%2==0 )
+                        tfs[i][j].setStyle("-fx-background-color: #FCF6F5FF; -fx-border-color: #000;");
+                    else
+                        tfs[i][j].setStyle("-fx-background-color: #F0E1B9FF; -fx-border-color: #000;");
                 }
 
 

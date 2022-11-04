@@ -40,6 +40,11 @@
                   <FontAwesomeIconView glyphName="ARROW_RIGHT" size="24" />
                </graphic>
             </Button>
+            <Button onAction="#onExitButtonClick" mnemonicParsing="false" text="Exit">
+               <graphic>
+                  <FontAwesomeIconView glyphName="REMOVE" size="25" />
+               </graphic>
+            </Button>
          </items>
       </ToolBar>
    </top>

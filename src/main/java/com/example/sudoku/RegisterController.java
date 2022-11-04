@@ -27,13 +27,9 @@ public class RegisterController {
     public TextField emailTf;
 
     public void onRegisterButtonClick(ActionEvent event) {
-
+        if(!checkInvalidFields())
+            return;
         try {
-            if (!cpasswordTf.getText().equals(passwordTf.getText())) {
-                consoleLabel.setText("Passwords don't match");
-                return;
-            }
-
             // register to database
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
             Statement statement = conn.createStatement();
@@ -55,5 +51,27 @@ public class RegisterController {
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+    }
+
+    public boolean checkInvalidFields(){
+        if (!cpasswordTf.getText().equals(passwordTf.getText())) {
+            consoleLabel.setText("Passwords don't match");
+            return false;
+        }
+
+        if(emailTf.getText().equals("")){
+            consoleLabel.setText("Empty email field");
+            return false;
+        }
+
+        if(usernameTf.getText().equals("")){
+            consoleLabel.setText("Empty username field");
+            return false;
+        }
+        if(passwordTf.getText().equals("")){
+            consoleLabel.setText("Empty password field");
+            return false;
+        }
+        return true;
     }
 }

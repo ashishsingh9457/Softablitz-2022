@@ -15,6 +15,7 @@ Suduko is Desktop based application with different features of awesome sudoku ga
 10. Achievements and medals for the local user.  \
 
 #Snaps of the project
+
 **Opening Page**
 
 ![Screenshot (55)](https://user-images.githubusercontent.com/83869332/199896635-8720d327-953f-4624-a252-8ee69abb185b.png)

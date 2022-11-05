@@ -9,36 +9,51 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="402.0" style="-fx-background-color: #e4ddcc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.RegisterController">
     <center>
-        <AnchorPane prefHeight="294.0" prefWidth="382.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="262.0" prefWidth="402.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="loginButton" layoutX="240.0" layoutY="185.0" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login">
+                <Button fx:id="loginButton" layoutX="265.0" layoutY="198.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="106.0" text="Login">
                     <graphic>
-                        <FontAwesomeIconView glyphName="ENTER" />
+                        <FontAwesomeIconView glyphName="KEY" />
                     </graphic>
                 </Button>
-                <Label layoutX="82.0" layoutY="61.0" text="Username" />
-                <Label layoutX="82.0" layoutY="102.0" text="Password" />
-                <TextField fx:id="usernameTf" layoutX="152.0" layoutY="57.0" />
-                <Button fx:id="registerButton" layoutX="153.0" layoutY="185.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="26.0" prefWidth="75.0" text="Register">
+                <Label layoutX="72.0" layoutY="72.0" text="Username">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+                <Label layoutX="79.0" layoutY="113.0" text="Password">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+                <TextField fx:id="usernameTf" layoutX="152.0" layoutY="70.0" prefHeight="26.0" prefWidth="218.0" />
+                <Button fx:id="registerButton" layoutX="153.0" layoutY="198.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="26.0" prefWidth="104.0" text="Register">
                     <graphic>
-                        <FontAwesomeIconView />
+                        <FontAwesomeIconView glyphName="BOOK" />
                     </graphic>
                 </Button>
-            <Label layoutX="40.0" layoutY="143.0" text="Confirm Password" />
-            <TextField fx:id="emailTf" layoutX="153.0" layoutY="14.0" />
-            <Label layoutX="103.0" layoutY="18.0" text="Email" />
-            <PasswordField fx:id="passwordTf" layoutX="153.0" layoutY="98.0" />
-            <PasswordField fx:id="cpasswordTf" layoutX="153.0" layoutY="139.0" />
+            <Label layoutX="20.0" layoutY="154.0" text="Confirm Password">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <TextField fx:id="emailTf" layoutX="152.0" layoutY="27.0" prefHeight="26.0" prefWidth="218.0" />
+            <Label layoutX="83.0" layoutY="29.0" text="Email-ID">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="152.0" layoutY="111.0" prefHeight="26.0" prefWidth="218.0" />
+            <PasswordField fx:id="cpasswordTf" layoutX="152.0" layoutY="152.0" prefHeight="26.0" prefWidth="219.0" />
             </children>
         </AnchorPane>
     </center>
     <top>
-        <Label text="Register" BorderPane.alignment="CENTER">
+        <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="402.0" style="-fx-background-color: #987e63;" text="Register" BorderPane.alignment="CENTER">
             <font>
-                <Font size="28.0" />
+                <Font name="Segoe Fluent Icons" size="28.0" />
             </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="BOOK" />
+         </graphic>
         </Label>
     </top>
    <bottom>

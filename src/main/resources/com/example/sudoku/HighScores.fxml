@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.HighScoresController">
    <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="343.0" prefWidth="546.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="bestColumn" prefWidth="55.20001220703125" text="Best" />
-            <TableColumn fx:id="gameTimeColumn" prefWidth="177.5999755859375" text="Game Time" />
-            <TableColumn fx:id="boardColumn" prefWidth="144.800048828125" text="Board" />
-            <TableColumn fx:id="modeColumn" prefWidth="139.199951171875" text="Mode" />
-            <TableColumn fx:id="playedOnColumn" prefWidth="164.0" text="Played On" />
+            <TableColumn fx:id="gameTimeColumn" prefWidth="142.4000244140625" text="Game Time" />
+            <TableColumn fx:id="boardColumn" prefWidth="131.199951171875" text="Board" />
+            <TableColumn fx:id="modeColumn" prefWidth="90.4000244140625" text="Mode" />
+            <TableColumn fx:id="playedOnColumn" prefWidth="181.59991455078125" text="Played On" />
          </columns>
       </TableView>
    </center>
    <top>
-      <Label fx:id="titleLabel" BorderPane.alignment="CENTER">
-         <graphic>
-            <FontAwesomeIconView />
-         </graphic>
-      </Label>
+      <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="600.0" style="-fx-background-color: #e4ddcc;" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <Label fx:id="titleLabel">
+               <graphic>
+                  <FontAwesomeIconView fill="#cd7f32" glyphName="TROPHY" size="21" />
+               </graphic>
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
    </top>
    <bottom>
       <Label fx:id="consoleLabel" BorderPane.alignment="CENTER" />

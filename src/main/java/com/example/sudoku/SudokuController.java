@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -284,6 +285,8 @@ public class SudokuController   {
 
         stage.setTitle("Sudoku");
         stage.setScene(new Scene(fxmlLoader.load()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Init.class.getResourceAsStream("mainico.png"))));
+        stage.setResizable(false);
         stage.show();
     }
 }

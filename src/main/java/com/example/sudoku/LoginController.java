@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Objects;
 
 public class LoginController {
     public Button loginButton;
@@ -50,8 +52,9 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("RegisterPage.fxml"));
         Stage stage = new Stage();
 
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Init.class.getResourceAsStream("mainico.png"))));
         stage.setTitle("Sudoku");
+        stage.setResizable(false);
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.show();
     }
@@ -64,8 +67,9 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(StartPageController.class.getResource("StartPage.fxml"));
         Stage stage = new Stage();
 
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Sudoku");
+        stage.setResizable(false);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Init.class.getResourceAsStream("mainico.png"))));
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.show();
     }

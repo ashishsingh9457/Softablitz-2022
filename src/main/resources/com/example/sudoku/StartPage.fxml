@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.StartPageController">
+<AnchorPane prefHeight="325.0" prefWidth="602.0" style="-fx-background-color: #e4ddcc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.StartPageController">
    <children>
-      <Label layoutX="239.0" layoutY="63.0" text="SUDOKU">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="61.0" prefHeight="40.0" prefWidth="143.0" text="SUDOKU">
          <font>
-            <Font size="31.0" />
+            <Font name="Palatino Linotype Bold" size="31.0" />
          </font>
-      </Label>
+         </Label>
       <TextField fx:id="nameField" layoutX="226.0" layoutY="109.0" promptText="Name" />
-      <ChoiceBox fx:id="difficultyField" layoutX="226.0" layoutY="146.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="sizeField" layoutX="226.0" layoutY="181.0" prefWidth="150.0" />
-      <Button fx:id="startButton" layoutX="222.0" layoutY="307.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="26.0" prefWidth="150.0" text="START" />
-      <Button layoutX="403.0" layoutY="23.0" mnemonicParsing="false" text="LeaderBoard" />
-      <Button layoutX="495.0" layoutY="23.0" mnemonicParsing="false" prefWidth="90.0" text="Achievements" />
-      <TextField fx:id="sizeTextField" editable="false" layoutX="227.0" layoutY="219.0" promptText="Size" />
+      <ComboBox fx:id="difficultyField" layoutX="226.0" layoutY="146.0" prefWidth="150.0" promptText="Mode" />
+      <ComboBox fx:id="sizeField" layoutX="226.0" layoutY="181.0" prefWidth="150.0" promptText="board" />
+      <Button fx:id="startButton" layoutX="225.0" layoutY="221.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="26.0" prefWidth="150.0" text="START" />
+      <AnchorPane prefHeight="40.0" prefWidth="602.0" style="-fx-background-color: #987e63;">
+         <children>
+            <ButtonBar layoutX="82.0" layoutY="6.0">
+               <buttons>
+                  <Button fx:id="loadGameButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLoadButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" size="19" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSigninButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="iconSignOut" glyphName="SIGN_IN" size="19" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onSettingButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="GEAR" size="19" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onLeaderboardButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="BAR_CHART" size="19" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="achievementsButton" mnemonicParsing="false" onAction="#onAchievementsButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="TROPHY" size="19" />
+                     </graphic>
+                  </Button>
+               </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+      <Label fx:id="consoleLabel" layoutX="14.0" layoutY="369.0" prefHeight="18.0" prefWidth="574.0" />
    </children>
 </AnchorPane>

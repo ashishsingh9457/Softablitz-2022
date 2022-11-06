@@ -41,13 +41,13 @@ public class LeaderboardController implements Initializable{
         Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-        ResultSet rs = statement.executeQuery("SELECT * FROM GAMEDATA ORDER BY game_time");
+        ResultSet rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA GROUP BY uid  ORDER BY MIN(game_time)");
 
         ArrayList<FinishedGameInfo> filist = new ArrayList<>();
 
         int i=1;
         while(rs.next()) {
-            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
+            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("MIN(game_time)")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
             filist.add(fi);
         }
 
@@ -82,18 +82,18 @@ public class LeaderboardController implements Initializable{
         String diff = modeComboBox.getValue();
 
         if(mode.equals("Any") && diff.equals("Any"))
-            rs = statement.executeQuery("SELECT * FROM GAMEDATA ORDER BY game_time");
+            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA GROUP BY uid  ORDER BY MIN(game_time)");
         else if(mode.equals("Any"))
-            rs = statement.executeQuery("SELECT * FROM GAMEDATA WHERE difficulty = '" + diff + "' ORDER BY game_time");
+            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE difficulty = '" + diff + "' GROUP BY uid ORDER BY MIN(game_time)");
         else
-            rs = statement.executeQuery("SELECT * FROM GAMEDATA WHERE mode = '" + mode + "' ORDER BY game_time");
+            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE mode = '" + mode + "' GROUP BY uid ORDER BY MIN(game_time)");
 
         table.getItems().removeAll(new ArrayList<>(table.getItems()));
         ArrayList<FinishedGameInfo> filist = new ArrayList<>();
 
         int i=1;
         while(rs.next()) {
-            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("game_time")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
+            FinishedGameInfo fi = new FinishedGameInfo(rs.getString("username"),Integer.parseInt(rs.getString("MIN(game_time)")),rs.getString("board"),rs.getString("mode"),rs.getString("createdAt"),i++ + "");
             filist.add(fi);
         }
         table.getItems().addAll(filist);

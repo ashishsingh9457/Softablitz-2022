@@ -41,7 +41,7 @@
                <font>
                   <Font size="15.0" />
                </font></Label>
-            <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="152.0" layoutY="111.0" prefHeight="26.0" prefWidth="218.0" />
+            <PasswordField fx:id="passwordTf" layoutX="152.0" layoutY="111.0" prefHeight="26.0" prefWidth="218.0" />
             <PasswordField fx:id="cpasswordTf" layoutX="152.0" layoutY="152.0" prefHeight="26.0" prefWidth="219.0" />
             </children>
         </AnchorPane>

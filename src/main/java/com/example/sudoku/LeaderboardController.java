@@ -23,7 +23,7 @@ public class LeaderboardController implements Initializable{
 
     public Label leaderboardLabel;
     public Stage stage;
-    public Label list[];
+    public Label[] list;
     public VBox vbox;
     public ComboBox<String> modeComboBox;
     public ComboBox<String> boardComboBox;
@@ -38,7 +38,7 @@ public class LeaderboardController implements Initializable{
     public void populate(Stage stage) throws SQLException {
         this.stage = stage;
 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
+        Connection conn = DriverManager.getConnection(Settings.getInstance().getDB_URI(), Settings.getInstance().getDB_USERNAME(), Settings.getInstance().getDB_PASSWORD());
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
         ResultSet rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA GROUP BY uid  ORDER BY MIN(game_time)");
@@ -57,7 +57,7 @@ public class LeaderboardController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] modeArray = {"Easy","Medium","Hard","Any"};
-        String[] boardArray = {"4x4","9x9","16x16","Any"};
+        String[] boardArray = {"9x9","16x16","Any"};
 
         modeComboBox.getItems().addAll(modeArray);
         boardComboBox.getItems().addAll(boardArray);
@@ -74,19 +74,22 @@ public class LeaderboardController implements Initializable{
         if(!checkInvalidFields())
             return;
 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
+        Connection conn = DriverManager.getConnection(Settings.getInstance().getDB_URI(), Settings.getInstance().getDB_USERNAME(), Settings.getInstance().getDB_PASSWORD());
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs;
 
         String mode = modeComboBox.getValue();
-        String diff = modeComboBox.getValue();
+        String board = boardComboBox.getValue();
 
-        if(mode.equals("Any") && diff.equals("Any"))
+        if(mode.equals("Any") && board.equals("Any"))
             rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA GROUP BY uid  ORDER BY MIN(game_time)");
         else if(mode.equals("Any"))
-            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE difficulty = '" + diff + "' GROUP BY uid ORDER BY MIN(game_time)");
-        else
+            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE board = '" + board + "' GROUP BY uid ORDER BY MIN(game_time)");
+        else if(board.equals("Any"))
             rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE mode = '" + mode + "' GROUP BY uid ORDER BY MIN(game_time)");
+        else
+            rs = statement.executeQuery("SELECT *,MIN(game_time) FROM GAMEDATA WHERE mode = '" + mode + "' && board = '" + board + "' GROUP BY uid ORDER BY MIN(game_time)");  ;
+
 
         table.getItems().removeAll(new ArrayList<>(table.getItems()));
         ArrayList<FinishedGameInfo> filist = new ArrayList<>();

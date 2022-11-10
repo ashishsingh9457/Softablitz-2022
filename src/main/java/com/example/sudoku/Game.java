@@ -30,6 +30,12 @@ public class Game implements Serializable {
         Sudoku sudoku = new Sudoku(this.size, this.blanks);
         sudoku.fillValues();
         this.solutionGrid = sudoku.getGrid();
+        for (int[] x: this.solutionGrid) {
+            for (int y : x)
+                System.out.print(y + " ");
+            System.out.println("");
+        }
+
         sudoku.removeKDigits();
         this.grid = sudoku.getGrid();
     }

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.HighScoresController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.HighScoresController">
    <center>
-      <TableView fx:id="table" prefHeight="343.0" prefWidth="546.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="339.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="bestColumn" prefWidth="55.20001220703125" text="Best" />
             <TableColumn fx:id="gameTimeColumn" prefWidth="142.4000244140625" text="Game Time" />
@@ -39,6 +36,24 @@
       </HBox>
    </top>
    <bottom>
-      <Label fx:id="consoleLabel" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ButtonBar>
+               <buttons>
+                  <ComboBox fx:id="boardComboBox" prefHeight="29.0" prefWidth="74.0" promptText="Board" />
+                  <ComboBox fx:id="modeComboBox" prefHeight="29.0" prefWidth="90.0" promptText="Mode" />
+                  <Button mnemonicParsing="false" onAction="#onFilterButtonClick">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" size="21" text="">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic>
+                  </Button>
+               </buttons>
+            </ButtonBar>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

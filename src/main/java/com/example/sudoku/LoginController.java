@@ -22,7 +22,8 @@ public class LoginController {
     public Label consoleLabel;
 
     public void onLoginButtonClick(ActionEvent event) throws SQLException, IOException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
+
+        Connection conn = DriverManager.getConnection(Settings.getInstance().getDB_URI(), Settings.getInstance().getDB_USERNAME(), Settings.getInstance().getDB_PASSWORD());
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs;
 
@@ -38,6 +39,7 @@ public class LoginController {
             FXMLLoader fxmlLoader = new FXMLLoader(Init.class.getResource("startPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Sudoku");
+            stage.getIcons().add(new Image(Objects.requireNonNull(Init.class.getResourceAsStream("mainico.png"))));
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

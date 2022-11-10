@@ -33,7 +33,7 @@ public class RegisterController {
             return;
         try {
             // register to database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
+            Connection conn = DriverManager.getConnection(Settings.getInstance().getDB_URI(), Settings.getInstance().getDB_USERNAME(), Settings.getInstance().getDB_PASSWORD());
             Statement statement = conn.createStatement();
 
             String query = "INSERT INTO USERS (email, username, password) VALUES ( '" + emailTf.getText() + "' , '" + usernameTf.getText() + "' , '" + passwordTf.getText() + "' )";

@@ -229,7 +229,7 @@ public class SudokuController   {
 
         // use database
         try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12531423", "sql12531423", "LACEJ2SjGm");
+            Connection conn = DriverManager.getConnection(Settings.getInstance().getDB_URI(), Settings.getInstance().getDB_USERNAME(), Settings.getInstance().getDB_PASSWORD());
             Statement statement = conn.createStatement();
 
             String query = "INSERT INTO GAMEDATA (username, game_time, mode, board, uid) VALUES ( '" + game.getName() + "' , " + game.time.getTimeInSeconds() + " , '" + game.difficulty + "' , '"+ game.getSsize() + "' , '"+game.getId() + "' )";

@@ -34,4 +34,16 @@ public class Settings {
     public static Settings getInstance(){
         return settings;
     }
+
+    public String getDB_URI() {
+        return "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12555731";
+    }
+
+    public String getDB_USERNAME() {
+        return "sql12555731";
+    }
+
+    public String getDB_PASSWORD() {
+        return "UnjhEHWCwe";
+    }
 }

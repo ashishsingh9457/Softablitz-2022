@@ -1,13 +1,72 @@
-# Sudoku 
-# MNNIT Softablitz-2022
-Suduko is Desktop based application with different features of awesome sudoku game.
+# MNNIT Softablitz 2022 
 
-**Features:**
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Ashutosh-Awasthi/Softablitz-2022">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Sudoko</h3>
+
+  <p align="center">
+    <a href="mailto:ashish.20208029@mnnit.ac.in?subject = Feedback&body = Message">Report Bug</a>
+    ·
+    <a href="mailto:ashish.20208029@mnnit.ac.in?subject = Feedback&body = Message">Request Feature</a>
+  </p>
+</div>
+<br />
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#sudoko">Sudoko</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+
+
+<!-- Sudoku -->
+# Sudoku
+Suduku is Desktop based application with different features of awesome sudoku game.
+
+
+<!-- Built With -->
+## Built With
+
++ [JAVA](https://www.java.com/en/)
++ [JAVA FX](https://openjfx.io/)
++ [SQL](https://www.freesqldatabase.com/)
+
+<!-- Features -->
+## Features
 1. Automatic sudoku boards. 
 2. A timer for scoring purposes. 
 3. Different size of the grid for enjoyment. (9x9,16x16)  
 4. Different difficulty levels.  
-5. Warning the user on an incorrect input.▸  
+5. Warning the user on an incorrect input. 
 6. Store high scores on the basis of game difficulty. 
 7. Save progress for unfinished games. 
 8. Hints for Users with time penalty for using them.  
@@ -37,10 +96,6 @@ Suduko is Desktop based application with different features of awesome sudoku ga
 
 ![WhatsApp Image 2022-11-09 at 16 41 52](https://user-images.githubusercontent.com/83869332/200815577-92f3d7d3-56e2-41ed-882f-49d9c66d1696.jpg)
 
-## Requirements
-
-+ [JAVA](https://www.java.com/en/)
-+ [SQL](https://www.freesqldatabase.com/)
 
 ## Contributors
 

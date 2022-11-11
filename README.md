@@ -82,7 +82,7 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 
 **Registration Page**
 
-![WhatsApp Image 2022-11-09 at 16 35 58](https://user-images.githubusercontent.com/83869332/200814936-5bd7fe61-6146-4cc4-822c-b20fb5d0c367.jpg)
+![image](https://user-images.githubusercontent.com/72591590/201414216-c720728e-0a6d-4eac-b7f4-619483e3ba2a.png)
 
 
 **Suduko Grid**

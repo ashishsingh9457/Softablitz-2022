@@ -61,7 +61,6 @@ public class StartPageController implements Initializable {
         BorderPane root = fxmlLoader.load();
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
-        root.setCenter(gp);
 
         // Creating TextFields and styling them
         TextField[][] tfs = new TextField[game.getSize()][game.getSize()];
@@ -84,6 +83,12 @@ public class StartPageController implements Initializable {
 
 
 
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        sp.setFitToWidth(true);
+        sp.setFitToHeight(true);
+        root.setCenter(sp);
+
         // create necessary changes in the scene
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
@@ -101,14 +106,13 @@ public class StartPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] diffs = {"Easy", "Medium", "Hard", "Test"};
-        String[] sizes = {"4x4", "9x9", "16x16", "Custom"};
+        String[] sizes = {"9x9", "16x16"};
         difficultyField.getItems().addAll(diffs);
         difficultyField.setValue("Medium");
         difficultyField.setOnAction(this::onSetDifficulty);
 
         sizeField.getItems().addAll(sizes);
         sizeField.setValue("9x9");
-        sizeField.setOnAction(this::onSetSize);
 
         User user = User.getInstance();
 
@@ -127,16 +131,6 @@ public class StartPageController implements Initializable {
 
     }
 
-    private void onSetSize(ActionEvent event)   {
-        if(sizeField.getValue().equals("Custom"))
-        {
-            sizeTextField.setDisable(false);
-        }else{
-            sizeTextField.setText("");
-            sizeTextField.setDisable(true);
-        }
-    }
-
     private int parseSize()    {
         String value = sizeField.getValue();
         if(value.equals("9x9"))
@@ -148,18 +142,6 @@ public class StartPageController implements Initializable {
         else
             return 0;
     }
-
-//    private int parseDifficulty() {
-//        String value = difficultyField.getValue();
-//
-//        if(value.equals("Easy"))
-//            return 1;
-//        else if(value.equals("Medium"))
-//            return  55;
-//        else if (value.equals("Hard"))
-//            return 58;
-//        else return 0;
-//    }
 
     public void onLoadButtonClick(ActionEvent event) {
 
@@ -194,7 +176,11 @@ public class StartPageController implements Initializable {
             BorderPane root = (BorderPane) fxmlLoader.load();
             GridPane gp = new GridPane();
             gp.setAlignment(Pos.CENTER);
-            root.setCenter(gp);
+            ScrollPane sp = new ScrollPane();
+            sp.setContent(gp);
+            sp.setFitToHeight(true);
+            sp.setFitToWidth(true);
+            root.setCenter(sp);
 
 
             // Creating TextFields
@@ -305,5 +291,8 @@ public class StartPageController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public void onCreateButtonClick(ActionEvent event) {
     }
 }

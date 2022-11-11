@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Ashutosh-Awasthi/Softablitz-2022">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="src/main/resources/com/example/sudoku/mainico.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Sudoko</h3>

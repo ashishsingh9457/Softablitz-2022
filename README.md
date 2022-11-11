@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 # MNNIT Softablitz 2022 
 
 <!-- PROJECT LOGO -->
@@ -27,26 +28,18 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#features">Features</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#snaps-of-the-project">Snaps of the project</a></li>
+    <li><a href="#contributors">Contributors</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
-
-
-
 
 <!-- Sudoku -->
 # Sudoku
@@ -59,6 +52,7 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 + [JAVA](https://www.java.com/en/)
 + [JAVA FX](https://openjfx.io/)
 + [SQL](https://www.freesqldatabase.com/)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Features -->
 ## Features
@@ -72,6 +66,7 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 8. Hints for Users with time penalty for using them.  
 9. Undo, Redo function.  
 10. Achievements and medals for the local users.  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Snaps of the project
 
@@ -95,9 +90,10 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 ![WhatsApp Image 2022-11-09 at 16 39 53](https://user-images.githubusercontent.com/83869332/200815345-8dd16374-0112-4b4b-b802-448a642c49b2.jpg)
 
 ![WhatsApp Image 2022-11-09 at 16 41 52](https://user-images.githubusercontent.com/83869332/200815577-92f3d7d3-56e2-41ed-882f-49d9c66d1696.jpg)
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributors
 
 + [Ashutosh Awasthi](http://www.linkedin.com/in/ashutosh-awasthi-5a167620a)
 + [Ashish Kumar Singh](www.linkedin.com/in/ashish-kumar-singh-a689a4208)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

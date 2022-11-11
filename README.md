@@ -101,6 +101,10 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 
 ## Contributors
 
-+ [Ashutosh Awasthi](http://www.linkedin.com/in/ashutosh-awasthi-5a167620a)
-+ [Ashish Kumar Singh](www.linkedin.com/in/ashish-kumar-singh-a689a4208)
++ Ashutosh Awasthi
+  <br><a href="mailto:ashish.20208029@mnnit.ac.in?subject = Feedback&body = Message">Gmail</a>
+  <a href="http://www.linkedin.com/in/ashutosh-awasthi-5a167620a/?subject = Feedback&body = Message">Linkdin</a>
++ Ashish Kumar Singh
+  <br><a href="mailto:ashish.20208029@mnnit.ac.in?subject = Feedback&body = Message">Gmail</a>
+  <a href="https://www.linkedin.com/in/ashish-kumar-singh-a689a4208/?subject = Feedback&body = Message">Linkdin</a>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

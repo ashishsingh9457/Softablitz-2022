@@ -79,17 +79,24 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 
 ![WhatsApp Image 2022-11-09 at 16 35 58](https://user-images.githubusercontent.com/83869332/200814831-e9e6fa07-3d19-4019-bb18-346a01ee1f87.jpg)
 
-
 **Registration Page**
 
 ![image](https://user-images.githubusercontent.com/72591590/201414216-c720728e-0a6d-4eac-b7f4-619483e3ba2a.png)
-
 
 **Suduko Grid**
 
 ![WhatsApp Image 2022-11-09 at 16 39 53](https://user-images.githubusercontent.com/83869332/200815345-8dd16374-0112-4b4b-b802-448a642c49b2.jpg)
 
 ![WhatsApp Image 2022-11-09 at 16 41 52](https://user-images.githubusercontent.com/83869332/200815577-92f3d7d3-56e2-41ed-882f-49d9c66d1696.jpg)
+
+
+**Leader Board**
+
+![WhatsApp Image 2022-11-12 at 00 36 00](https://user-images.githubusercontent.com/83869332/201414668-430f1b75-78fc-4b02-bec1-185052dd2406.jpg)
+
+**High Score Board**
+
+![WhatsApp Image 2022-11-12 at 00 37 00](https://user-images.githubusercontent.com/83869332/201414728-a5f124a0-5575-4e27-b774-094b1d4437da.jpg)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributors

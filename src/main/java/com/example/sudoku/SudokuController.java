@@ -264,7 +264,7 @@ public class SudokuController   {
 
         gameStack.undoStack.push(new Game(game));
         game.grid[hi][hj] = game.solutionGrid[hi][hj];
-        game.time.tick(game.getSize()* game.getSize()- game.getNumberOfHints());
+        game.time.tick((int) Math.pow(1.3, -(game.getNumberOfHints()- 23)) + 15);
 
         if(!gameStack.undoStack.isEmpty())
             undoButton.setDisable(false);

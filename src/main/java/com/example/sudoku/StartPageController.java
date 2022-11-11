@@ -61,7 +61,6 @@ public class StartPageController implements Initializable {
         BorderPane root = fxmlLoader.load();
         GridPane gp = new GridPane();
         gp.setAlignment(Pos.CENTER);
-        root.setCenter(gp);
 
         // Creating TextFields and styling them
         TextField[][] tfs = new TextField[game.getSize()][game.getSize()];
@@ -83,6 +82,12 @@ public class StartPageController implements Initializable {
             }
 
 
+
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(gp);
+        sp.setFitToWidth(true);
+        sp.setFitToHeight(true);
+        root.setCenter(sp);
 
         // create necessary changes in the scene
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -171,7 +176,11 @@ public class StartPageController implements Initializable {
             BorderPane root = (BorderPane) fxmlLoader.load();
             GridPane gp = new GridPane();
             gp.setAlignment(Pos.CENTER);
-            root.setCenter(gp);
+            ScrollPane sp = new ScrollPane();
+            sp.setContent(gp);
+            sp.setFitToHeight(true);
+            sp.setFitToWidth(true);
+            root.setCenter(sp);
 
 
             // Creating TextFields

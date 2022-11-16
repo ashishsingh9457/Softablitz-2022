@@ -1,5 +1,5 @@
 <a name="readme-top"></a>
-# MNNIT Softablitz 2022 
+# MNNIT Avishkar Softablitz 2022
 
 <!-- PROJECT LOGO -->
 <br />

@@ -9,6 +9,7 @@
   </a>
 
   <h3 align="center">Sudoko</h3>
+  
 
   <p align="center">
     <a href="mailto:ashish.20208029@mnnit.ac.in?subject = Feedback&body = Message">Report Bug</a>
@@ -110,5 +111,4 @@ Suduku is Desktop based application with different features of awesome sudoku ga
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Certificates
-!(https://github.com/ashishsingh9457/Softablitz-2022-Sudojoy/blob/master/Ashish%20Kumar%20Singh_Softablitz%20(Cyberquest)_Third-1.pdf)
-
+![Ashish Kumar Singh_Softablitz (Cyberquest)_Third-1_page-0001](https://github.com/user-attachments/assets/3bf2c216-c7b1-4531-a1fd-226e7f601e3c)
